@@ -7,6 +7,7 @@ use pyo3::prelude::*;
 
 mod algorithms;
 mod evaluation;
+mod strategies;
 mod prices;
 
 static PRICE_MANAGER: Lazy<RwLock<PriceManager>> = Lazy::new(|| RwLock::new(PriceManager::new()));
