@@ -5,6 +5,8 @@ use once_cell::sync::Lazy;
 use prices::{price::Price, price_manager::PriceManager, price_ohlc::PriceOhlc, price_tick::PriceTick};
 use pyo3::prelude::*;
 
+mod algorithms;
+mod evaluation;
 mod prices;
 
 static PRICE_MANAGER: Lazy<RwLock<PriceManager>> = Lazy::new(|| RwLock::new(PriceManager::new()));
