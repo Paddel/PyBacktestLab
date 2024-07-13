@@ -9,7 +9,6 @@ pub struct Signal {
     pub stop_loss: f32,
     pub take_profit: Vec<f32>,
     pub time_stamp: u64,
-    pub message_id: u32,
     pub source: String,
 }
 

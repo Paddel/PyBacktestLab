@@ -68,7 +68,7 @@ class CollectPricesHistorical:
     def run(self, symbol, year, month):
         os.mkdir(self.tmp_price_directory)
         os.chdir(self.tmp_price_directory)
-        self._collect_for_symbol_tick(year, month, symbol)
+        self._collect_for_symbol_ohlc(year, month, symbol)
         os.chdir('..')
         os.removedirs(self.tmp_price_directory)
         
