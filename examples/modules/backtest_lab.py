@@ -1,4 +1,6 @@
 
+from datetime import timedelta
+
 import py_backtest_lab
 
 class BacktestLab:
@@ -97,9 +99,6 @@ class BacktestLab:
 
     def backtest_signals(self, conditions, strategy_rules, signals):
         signals = self._filter_signals(signals)
-        for signal in signals:
-            if 'updates' not in signal:
-                raise ValueError('Signal updates not set')
         signals = BacktestLab._convert_rust_signals(signals)
         return py_backtest_lab.backtest_signals(conditions, strategy_rules, signals)
     

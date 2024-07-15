@@ -4,6 +4,7 @@ use dict_derive::FromPyObject;
 
 use super::entry::entry::Entry;
 use super::entry::bollinger::Bollinger as BollingerEntry;
+use super::entry::immediate::Immediate;
 use super::entry::volatility_mean::VolatilityMean;
 use super::entry::volatility_pullback::VolatilityPullback;
 use super::exit::exit::Exit;
@@ -53,6 +54,7 @@ impl StrategyManager {
                 let period_minutes = rule.parameters.get("period_minutes").ok_or("Missing period_minutes")?;
                 Ok(Box::new(BollingerEntry::new(*std_dev_factor, *period_minutes as i32)))
             }
+            "immediate" => Ok(Box::new(Immediate::new())),
             _ => Err("Invalid entry strategy name"),
         }
     }

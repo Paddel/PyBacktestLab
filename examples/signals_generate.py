@@ -30,15 +30,13 @@ class SignalsGenerate:
             upper_band = mean + STD_DEV_FACTOR * std_dev
             lower_band = mean - STD_DEV_FACTOR * std_dev
 
-            signal = None
-            if prices[i]['close'] < lower_band:
-                stop_loss = prices[i]['close'] - std_dev * STD_DEV_FACTOR / 2
-                signal = self._create_signal(symbol, 'sell', stop_loss, [upper_band], 'Bollinger', prices[i]['date'])
-            elif prices[i]['close'] > upper_band:
-                stop_loss = prices[i]['close'] + std_dev * STD_DEV_FACTOR / 2
-                signal = self._create_signal(symbol, 'buy', stop_loss, [lower_band], 'Bollinger', prices[i]['date'])
-            
-            if signal:
+            if prices[i]['low'] < lower_band:
+                stop_loss = lower_band - std_dev * STD_DEV_FACTOR / 2
+                signal = self._create_signal(symbol, 'buy', stop_loss, [upper_band], 'Bollinger', prices[i]['date'])
+                self.database.insert_signal(signal)
+            if prices[i]['high'] > upper_band:
+                stop_loss = upper_band + std_dev * STD_DEV_FACTOR / 2
+                signal = self._create_signal(symbol, 'sell', stop_loss, [lower_band], 'Bollinger', prices[i]['date'])
                 self.database.insert_signal(signal)
                 
 
