@@ -24,7 +24,9 @@ Also install the requirements:
 
 ### Build:
 Use `maturin build` to compile the library to a .whl file.
+
 Use `pip install --force-reinstall path/to/whl_file.whl` to install the library.
+
 Example: `pip install --force-reinstall target\wheels\PyBacktestLab-0.1.0-cp311-none-win_amd64.whl`
 
 ### Examples:
